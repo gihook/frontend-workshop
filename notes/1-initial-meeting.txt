@@ -1,0 +1,26 @@
+Milos Pesic
+	promise, observable, state, formly
+Miljana Draskovic
+	promise
+Ivica Florovic
+	state, 'rucni' state
+Igor Resman
+	teorijski promise i observable; this (u js)
+Branislav Selenic
+	forme
+Marko Mijatovic
+	promise, save forme (prelazak uz izmene, Angular Guards)
+Danilo Puskarevic
+	forme
+Kristijan Mitrovic
+	reactive forms
+Milos Joksimovic
+	Behaviour Subject
+Nikola Djukanovic
+	filter, map, reduce	
+
+ocekivanja:
+	promise, observable, kako radi js (event loop)	
+	network tab, konzola, preformace snapshots u dev tools u browseru
+	plugins u vscode za angular development (kako se oni podesavaju tako da ih svi naslede)
+	stvari koje su pomenute, za svakog ponaosob
