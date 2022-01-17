@@ -1,0 +1,16 @@
+Milos Pesic
+	80%; closure?
+Miljana Draskovic
+	80%; 
+Milos Joksimovic
+	70%; closure upotreba?  
+Igor Resman
+	85%; 
+Ana Bozinovic;
+	90%; closure included variables?
+Branislav Selenic
+	85%; 
+Marko Mijatovic
+	90%; pristup promenljivim iz backpacka (closure)
+Nikola Djukanovic
+	95%; gde u memoriji se nalazi funkcija?
