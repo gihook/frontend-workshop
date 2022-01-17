@@ -1,4 +1,4 @@
-import { myMap, myReduce } from "../src/array-functions";
+import { myMap, myReduce, where } from "../src/array-functions";
 
 declare type Dict = {
   [key: string]: string;
@@ -44,5 +44,25 @@ describe("array functions", () => {
     const result = myReduce(array, func, {} as Dict);
 
     expect(result["test1"]).toBe("test1");
+  });
+
+  it("event numbers", () => {
+    const array = [1, 2, 3, 4, 5];
+
+    const func = (item: number) => item % 2 == 0;
+    const result = where(array, func);
+
+    expect(result[0]).toBe(2);
+    expect(result[1]).toBe(4);
+  });
+
+  it("strings that containr letter 'a'", () => {
+    const array = ["test", "pera", "zika"];
+
+    const func = (item: string) => item.includes("a");
+    const result = where(array, func);
+
+    expect(result[0]).toBe("pera");
+    expect(result[1]).toBe("zika");
   });
 });

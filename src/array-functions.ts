@@ -25,3 +25,13 @@ export const myReduce = <ArrayValueType, StartValueType>(
 
   return currentValue;
 };
+
+export const where = <T>(array: T[], func: (num: T) => boolean) => {
+  const newArray = [];
+
+  for (let i = 0, len = array.length; i < len; i++) {
+    if (func(array[i])) newArray.push(array[i]);
+  }
+
+  return newArray;
+};
