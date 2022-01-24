@@ -1,8 +1,16 @@
-import { myMap, myReduce, toDictionary, where } from "../src/array-functions";
+import {
+  forEach,
+  myMap,
+  myReduce,
+  toDictionary,
+  where,
+} from "../src/array-functions";
 
 declare type Dict = {
   [key: string]: string;
 };
+
+declare type Data = { id: number; name: string; desc: string };
 
 describe("array functions", () => {
   it("map function for number", () => {
@@ -67,30 +75,34 @@ describe("array functions", () => {
   });
 
   it("to dictionary", () => {
-    const submissions = [
+    const submissions: Data[] = [
       {
         id: 1,
-
         name: "sub1",
-
         desc: "desc1",
       },
 
       {
         id: 2,
-
         name: "sub2",
-
         desc: "desc2",
       },
     ];
 
-    const funcKey = (item: any) => item.name;
-    const funcValue = (item: any) => item.desc;
+    const funcKey = (item: Data) => item.name;
+    const funcValue = (item: Data) => item.desc;
 
     const result = toDictionary(submissions, funcKey, funcValue);
 
     expect(result["sub1"]).toBe("desc1");
     expect(result["sub2"]).toBe("desc2");
+  });
+
+  it("forEach", () => {
+    const array = [1, 2, 3];
+    const func = (element: any) => {
+      console.log(element);
+    };
+    forEach(array, func);
   });
 });

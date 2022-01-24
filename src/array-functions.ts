@@ -36,16 +36,26 @@ export const where = <T>(array: T[], func: (num: T) => boolean) => {
   return newArray;
 };
 
-export const toDictionary = (array: any[], funcKey: any, funcValue: any) => {
-  const result = {} as any;
+export const toDictionary = <T, TValue>(
+  array: T[],
+  funcKey: (item: T) => string,
+  funcValue: (item: T) => TValue
+): { [key: string]: TValue } => {
+  const result: { [key: string]: TValue } = {};
 
   for (let i = 0; i < array.length; i++) {
     const key = funcKey(array[i]);
-
     const value = funcValue(array[i]);
 
     result[key] = value;
   }
 
   return result;
+};
+
+export const forEach = <T>([head, ...tail]: T[], func: (item: T) => void) => {
+  if (!head) return;
+
+  func(head);
+  forEach(tail, func);
 };
