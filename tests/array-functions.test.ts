@@ -1,4 +1,4 @@
-import { myMap, myReduce, where } from "../src/array-functions";
+import { myMap, myReduce, toDictionary, where } from "../src/array-functions";
 
 declare type Dict = {
   [key: string]: string;
@@ -64,5 +64,33 @@ describe("array functions", () => {
 
     expect(result[0]).toBe("pera");
     expect(result[1]).toBe("zika");
+  });
+
+  it("to dictionary", () => {
+    const submissions = [
+      {
+        id: 1,
+
+        name: "sub1",
+
+        desc: "desc1",
+      },
+
+      {
+        id: 2,
+
+        name: "sub2",
+
+        desc: "desc2",
+      },
+    ];
+
+    const funcKey = (item: any) => item.name;
+    const funcValue = (item: any) => item.desc;
+
+    const result = toDictionary(submissions, funcKey, funcValue);
+
+    expect(result["sub1"]).toBe("desc1");
+    expect(result["sub2"]).toBe("desc2");
   });
 });

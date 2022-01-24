@@ -1,0 +1,16 @@
+Miljana Draskovic
+	75%; fetch?
+Ivica Florovic
+	100%;
+Marko Mijatovic
+	95%;
+Branislav Selenic
+	80%; koje funkcija idu na koji queue?
+Milos Joksimovic
+	80%; 
+Milos Pesic
+	90%; async?
+Igor Resman
+	65%; microtask queue
+Kristijan Mitrovic
+	?%

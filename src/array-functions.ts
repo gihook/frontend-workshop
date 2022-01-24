@@ -35,3 +35,17 @@ export const where = <T>(array: T[], func: (num: T) => boolean) => {
 
   return newArray;
 };
+
+export const toDictionary = (array: any[], funcKey: any, funcValue: any) => {
+  const result = {} as any;
+
+  for (let i = 0; i < array.length; i++) {
+    const key = funcKey(array[i]);
+
+    const value = funcValue(array[i]);
+
+    result[key] = value;
+  }
+
+  return result;
+};
