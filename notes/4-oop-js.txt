@@ -1,0 +1,16 @@
+Igor Resman
+	50%;
+Branislav Selenic
+	0%;
+Kristijan Mitrovic
+	0%;
+Ana Bozinovic
+	0%;
+Milos Pesic
+	80%;
+Milos Joksimovic
+	80%; od cega zavisi this?
+Danilo Puskrevic
+	50%;
+Miljana Draskovic
+	0%;

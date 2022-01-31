@@ -59,3 +59,13 @@ export const forEach = <T>([head, ...tail]: T[], func: (item: T) => void) => {
   func(head);
   forEach(tail, func);
 };
+
+export const myFind = <T>(array: T[], func: (item: T) => boolean): T | null => {
+  let [head, ...tail] = array;
+
+  if (!head) return null;
+  if (func(head)) return head;
+
+  return myFind(tail, func);
+};
+

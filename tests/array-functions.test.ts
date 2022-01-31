@@ -1,5 +1,6 @@
 import {
   forEach,
+  myFind,
   myMap,
   myReduce,
   toDictionary,
@@ -104,5 +105,14 @@ describe("array functions", () => {
       console.log(element);
     };
     forEach(array, func);
+  });
+
+  it("myFind", () => {
+    const array = [1, 2, 5, 6];
+
+    const func = (element: any): boolean => element > 3;
+
+    const result = myFind(array, func);
+    expect(result).toBe(5);
   });
 });
