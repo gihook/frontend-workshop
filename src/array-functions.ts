@@ -69,3 +69,29 @@ export const myFind = <T>(array: T[], func: (item: T) => boolean): T | null => {
   return myFind(tail, func);
 };
 
+export const myAny = <T>(
+  [head, ...tail]: T[],
+  func: (element: T) => boolean
+): boolean => {
+  const condition = func;
+  if (head == undefined) return false;
+  if (condition(head)) return true;
+
+  return myAny(tail, func);
+};
+
+export const mySort = <T>(array: T[], sortBy: (element: T) => any) => {
+  const newArray = [...array];
+
+  newArray.sort((element1, element2) => {
+    const a1 = sortBy(element1);
+    const a2 = sortBy(element2);
+
+    if (a1 < a2) return -1;
+    if (a1 == a2) return 0;
+
+    return 1;
+  });
+
+  return newArray;
+};

@@ -1,8 +1,10 @@
 import {
   forEach,
+  myAny,
   myFind,
   myMap,
   myReduce,
+  mySort,
   toDictionary,
   where,
 } from "../src/array-functions";
@@ -101,10 +103,12 @@ describe("array functions", () => {
 
   it("forEach", () => {
     const array = [1, 2, 3];
-    const func = (element: any) => {
-      console.log(element);
-    };
+
+    let conunter = 0;
+    const func = (_element: any) => conunter++;
     forEach(array, func);
+
+    expect(conunter).toBe(3);
   });
 
   it("myFind", () => {
@@ -114,5 +118,28 @@ describe("array functions", () => {
 
     const result = myFind(array, func);
     expect(result).toBe(5);
+  });
+
+  it("myAny", () => {
+    const array = [1, 2, 5, 6];
+    const func = (element: any): boolean => element > 3;
+    const result = myAny(array, func);
+    expect(result).toBe(true);
+  });
+
+  it("mySort", () => {
+    const nums = [2, 1, 111];
+    const sortBy = (element: number) => element;
+    const result = mySort(nums, sortBy);
+
+    expect(JSON.stringify(result)).toBe(JSON.stringify([1, 2, 111]));
+  });
+
+  it("mySort with squared number", () => {
+    const nums = [-4, 1, 111];
+    const sortBy = (element: number) => element * element;
+    const result = mySort(nums, sortBy);
+
+    expect(JSON.stringify(result)).toBe(JSON.stringify([1, -4, 111]));
   });
 });
