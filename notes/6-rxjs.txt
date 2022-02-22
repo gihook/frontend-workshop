@@ -1,0 +1,16 @@
+Marko Mijatovic
+		60%; push, pull
+Igor Resman
+		60%; 
+Branslav Selenic
+		0%;
+Kristijan Mitrovic
+		20%; 
+Milos Joksimovic
+		50%;
+Ana Bozinovic
+		70%; redosled izvrsavanja?
+Milos Pesic
+		70%; operatori? Kada ne treba koristiti Observable, a kada Promise?
+Danilo Puskrevic
+		50%; 
