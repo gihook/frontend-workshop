@@ -83,3 +83,8 @@ const subscription = fromPromise$.subscribe({
     console.log("complete");
   },
 });
+
+// Marko
+// new Observable<T>(subscriptionFunction)
+
+// mapObservable(observable$: Observable): Observable
