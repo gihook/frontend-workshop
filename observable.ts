@@ -1,11 +1,11 @@
 import { Observer, Subscription } from "./interface";
 
-export class Observable {
-    constructor(private subscribeFunction: (observer: Partial<Observer>) => Subscription) {
-    }
-  
-    subscribe(observer: Partial<Observer>): Subscription {
-      return this.subscribeFunction(observer);
-    }
-  
+export class Observable<T> {
+  constructor(
+    private subscribeFunction: (observer: Partial<Observer<T>>) => Subscription
+  ) {}
+
+  subscribe(observer: Partial<Observer<T>>): Subscription {
+    return this.subscribeFunction(observer);
   }
+}
