@@ -51,8 +51,6 @@ const fromPromise$ = {
   },
 };
 
-// mapObservable(observable$: Observable): Observable
-
 const interval$ = new Observable<number>((observer) => {
   const next = observer.next || function () {};
 
@@ -66,19 +64,37 @@ const interval$ = new Observable<number>((observer) => {
   };
 });
 
-function mapObservable(observable$: Observable<number>, func: (x: number) => number): Observable<number> {
-  return new Observable<number>(observer => {
+function mapObservable<T, R>(
+  observable$: Observable<T>,
+  mapper: (x: T) => R
+): Observable<R> {
+  return new Observable<R>((observer) => {
     const next = observer.next || function () {};
-    
-    const subscription = observable$.subscribe({next:(x) => next(func(x))});
+
+    const subscription = observable$.subscribe({
+      next: (x) => next(mapper(x)),
+    });
+
     return {
-      unsubscribe: function() {
+      unsubscribe: function () {
         subscription.unsubscribe();
-      }
-    }
+      },
+    };
   });
-} 
-const func = function(x: number) { return x*x };
+}
+
+const func = function (x: number) {
+  return `value ${x * x}`;
+};
+
 const newObservable$ = mapObservable(interval$, func);
-const subscription = newObservable$.subscribe({next:(x) => console.log(x)});
-setInterval(()=> {subscription.unsubscribe()}, 500);
+
+const subscription = newObservable$.subscribe({ next: (x) => console.log(x) });
+setInterval(() => {
+  subscription.unsubscribe();
+}, 500);
+
+// Nikola .pipe(???) method
+
+// Danilo
+// implementira filterObservable(observable$: Observable<nuber>): Observable<nuber>
