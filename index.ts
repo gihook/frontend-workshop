@@ -1,19 +1,11 @@
-declare type Callback = (x: any) => void;
+import { Observer, Subscription } from "./interface";
+import { Observable } from "./observable";
 
-interface Observer {
-  next: (x: any) => void;
-  complete: () => void;
-  error: (error: any) => void;
-}
-
-interface Subscription {
-  unsubscribe: () => void;
-}
 
 const test$ = {
   subscribe: function (observer: Partial<Observer>): Subscription {
-    const next = observer.next || function () {};
-    const complete = observer.complete || function () {};
+    const next = observer.next || function () { };
+    const complete = observer.complete || function () { };
 
     next(1);
     next(2);
@@ -40,20 +32,7 @@ const test$ = {
   },
 };
 
-const interval$ = {
-  subscribe: function (observer: Partial<Observer>): Subscription {
-    const next = observer.next || function () {};
 
-    let i = 0;
-    const r = setInterval(() => next(i++), 100);
-
-    return {
-      unsubscribe: function () {
-        clearInterval(r);
-      },
-    };
-  },
-};
 
 const testPromise = new Promise((resolve, _reject) => {
   setTimeout(() => resolve(1), 1000);
@@ -61,8 +40,8 @@ const testPromise = new Promise((resolve, _reject) => {
 
 const fromPromise$ = {
   subscribe: function (observer: Partial<Observer>): Subscription {
-    const next = observer.next || function () {};
-    const complete = observer.complete || function () {};
+    const next = observer.next || function () { };
+    const complete = observer.complete || function () { };
 
     testPromise.then((b) => {
       next(b);
@@ -70,21 +49,23 @@ const fromPromise$ = {
     });
 
     return {
-      unsubscribe: function () {},
+      unsubscribe: function () { },
     };
   },
 };
 
-const subscription = fromPromise$.subscribe({
-  next: function (x) {
-    console.log({ x });
-  },
-  complete: function () {
-    console.log("complete");
-  },
-});
-
-// Marko
-// new Observable<T>(subscriptionFunction)
-
 // mapObservable(observable$: Observable): Observable
+
+const observable$ = new Observable((observer) => {
+  const next = observer.next || function () { };
+
+  let i = 0;
+  const r = setInterval(() => next(i++), 100);
+
+  return {
+    unsubscribe: function () {
+      clearInterval(r);
+    },
+  };
+});
+const pom = observable$.subscribe({ next: function (x) { console.log(x) } });
