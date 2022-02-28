@@ -53,7 +53,7 @@ const fromPromise$ = {
 
 // mapObservable(observable$: Observable): Observable
 
-const observable$ = new Observable((observer) => {
+const interval$ = new Observable<number>((observer) => {
   const next = observer.next || function () {};
 
   let i = 0;
@@ -65,8 +65,20 @@ const observable$ = new Observable((observer) => {
     },
   };
 });
-const pom = observable$.subscribe({
-  next: function (x) {
-    console.log(x);
-  },
-});
+
+function mapObservable(observable$: Observable<number>, func: (x: number) => number): Observable<number> {
+  return new Observable<number>(observer => {
+    const next = observer.next || function () {};
+    
+    const subscription = observable$.subscribe({next:(x) => next(func(x))});
+    return {
+      unsubscribe: function() {
+        subscription.unsubscribe();
+      }
+    }
+  });
+} 
+const func = function(x: number) { return x*x };
+const newObservable$ = mapObservable(interval$, func);
+const subscription = newObservable$.subscribe({next:(x) => console.log(x)});
+setInterval(()=> {subscription.unsubscribe()}, 500);
